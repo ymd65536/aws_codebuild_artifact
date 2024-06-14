@@ -31,7 +31,7 @@ Resources:
         Type: LINUX_CONTAINER
         PrivilegedMode: true
       Name: !Sub "${PjName}"
-      ServiceRole: !ImportValue QiitaCodeBuildRoleName
+      ServiceRole: !ImportValue CodeBuildRoleName
       Source:
         BuildSpec: buildspec.yml
         Type: CODEPIPELINE
