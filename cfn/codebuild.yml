@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: cicd_handson
+Description: Qiita
 Parameters:
   PjName:
     Type: String
@@ -31,13 +31,13 @@ Resources:
         Type: LINUX_CONTAINER
         PrivilegedMode: true
       Name: !Sub "${PjName}"
-      ServiceRole: !ImportValue CodeBuildRoleName
+      ServiceRole: !ImportValue QiitaCodeBuildRoleName
       Source:
         BuildSpec: buildspec.yml
         Type: CODEPIPELINE
       Tags:
         - Key: Name
-          Value: cicd_handson
+          Value: Qiita
   # CloudWatch Logs
   QiitaCloudWatchLogs:
     Type: "AWS::Logs::LogGroup"
