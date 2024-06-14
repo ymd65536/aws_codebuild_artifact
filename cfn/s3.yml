@@ -3,7 +3,7 @@ Description: Qiita
 Parameters:
   PjName:
     Type: String
-    Default: Qiita
+    Default: qiita
 Resources:
   # Save Artifact
   QiitaBucket:
