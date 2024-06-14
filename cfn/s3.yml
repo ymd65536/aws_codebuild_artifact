@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Qiita
+Parameters:
+  PjName:
+    Type: String
+    Default: Qiita
+Resources:
+  # Save Artifact
+  QiitaBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    Properties:
+      VersioningConfiguration:
+        Status: "Suspended"
+      BucketName: !Sub "${PjName}-bucket-${AWS::AccountId}"
+      AccessControl: "Private"
+      Tags:
+        - Key: "Name"
+          Value: !Sub "${PjName}"
+Outputs:
+  Arn:
+    Value: !GetAtt QiitaBucket.Arn
+    Export:
+      Name: QiitaBucketArn
+
+  Name:
+    Value: !Ref QiitaBucket
+    Export:
+      Name: QiitaBucketName
