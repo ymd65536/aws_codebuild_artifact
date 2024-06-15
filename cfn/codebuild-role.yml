@@ -31,9 +31,18 @@ Resources:
         Statement:
           - Effect: Allow
             Action:
-              - "ecr:GetAuthorizationToken"
+              - "codeartifact:GetAuthorizationToken"
+              - "codeartifact:GetRepositoryEndpoint"
+              - "codeartifact:ReadFromRepository"
             Resource:
               - "*"
+          - Effect: Allow
+            Action:
+              - "sts:GetServiceBearerToken"
+            Resource: "*"
+            Condition:
+              StringEquals:
+                sts:AWSServiceName: "codeartifact.amazonaws.com"
           - Effect: Allow
             Action:
               - "logs:CreateLogStream"
