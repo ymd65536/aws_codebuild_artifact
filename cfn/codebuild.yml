@@ -22,9 +22,12 @@ Resources:
             Value: !Ref AWS::AccountId
           - Name: AWS_DOMAIN
             Type: PLAINTEXT
-            Value: !Sub "${PjName}"
+            Value: "cf-handson-domain"
+          - Name: REPOSITORY_NAME
+            Type: PLAINTEXT
+            Value: "cf-handson-domain"
           - Name: CODEARTIFACT_URL
-            Value: "https://$AWS_DOMAIN-$AWS_ACCOUNT_ID.d.codeartifact.$AWS_DEFAULT_REGION.amazonaws.com/npm/cicd/"
+            Value: "https://$AWS_DOMAIN-$AWS_ACCOUNT_ID.d.codeartifact.$AWS_DEFAULT_REGION.amazonaws.com/npm/cf-handson-domain/"
 
         ComputeType: BUILD_GENERAL1_SMALL
         Image: aws/codebuild/amazonlinux2-x86_64-standard:4.0
